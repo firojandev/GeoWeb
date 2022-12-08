@@ -36,6 +36,7 @@ namespace GeoService
                             user.id = Convert.ToInt32(reader["Id"]);
                             user.fullname = reader["fullname"].ToString()!;
                             user.device_id = reader["device_id"].ToString()!;
+                            user.email = reader["email"].ToString()!;
 
                             list.Add(user);
 
