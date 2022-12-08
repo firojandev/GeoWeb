@@ -1,0 +1,21 @@
+﻿@model List<GeoService.models.UserLocation>;
+
+@{
+    ViewData["Title"] = "Users Location";
+}
+<h1>@ViewData["Title"]</h1>
+
+@foreach (var loc in Model)
+{
+
+    <p>@loc.id</p>
+    <p>@loc.UserId</p>
+    <p>@loc.lat</p>
+    <p>@loc.lng</p>
+    <p>@loc.SiteId</p>
+    <p>@loc.SiteName</p>
+    <p>@loc.ZoneId</p>
+    <p>@loc.ZoneName</p>
+
+}
+

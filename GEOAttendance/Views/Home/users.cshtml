@@ -1,0 +1,17 @@
+﻿@model List<GeoService.models.UserModel>;
+
+@{
+    ViewData["Title"] = "Users List";
+}
+<h1>@ViewData["Title"]</h1>
+
+@foreach (var user in Model)
+{
+
+<p>@user.id</p>
+<p>@user.fullname</p>
+<p>@user.device_id</p>
+<p>@user.device_id</p>
+
+}
+
