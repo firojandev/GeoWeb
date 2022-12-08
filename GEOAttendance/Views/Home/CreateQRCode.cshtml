@@ -5,14 +5,14 @@
 }
 
 <div class="text-center">
-    <h1 class="display-4">Generate QR Code</h1>
+    <h1 class="display-4">QR Code</h1>
 
 </div>
 
 <div class="row">
     <div class="col-md-4">
         <form asp-controller="Home" asp-action="CreateQRCode">
-            <input type="hidden" value="@Model.UserId" />
+            <input type="hidden" value="@Model.UserId"/>
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
                 <label asp-for="QRCodeText" class="control-label"></label>
@@ -23,8 +23,7 @@
                 <input type="submit" value="Generate QR Code" class="btn btn-primary text-center" />
             </div>
             <div class="form-group">
-
-                <img src="@ViewBag.QrCodeUri" class="img-thumbnail" />
+                <img src="@Model.QrCodeUri" class="img-thumbnail" />
             </div>
         </form>
     </div>

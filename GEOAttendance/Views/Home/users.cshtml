@@ -12,6 +12,7 @@
             <th scope="col">Name</th>
             <th scope="col">Device Id</th>
             <th scope="col">Email</th>
+            <th scope="col">Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -22,6 +23,11 @@
                 <td>@user.fullname</td>
                 <td>@user.device_id</td>
                 <td>@user.email</td>
+                <td>
+                    <a asp-controller="Home" asp-action="Index" asp-route-Id="@user.id" class="btn btn-primary">
+                       QR Code
+                    </a>
+                </td>
             </tr>
 
         }
