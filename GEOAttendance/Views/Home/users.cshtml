@@ -25,7 +25,10 @@
                 <td>@user.email</td>
                 <td>
                     <a asp-controller="Home" asp-action="Index" asp-route-Id="@user.id" class="btn btn-primary">
-                       QR Code
+                        QR Code
+                    </a>
+                    <a asp-controller="Message" asp-action="Create" asp-route-Id="@user.id" asp-route-fullname="@user.fullname" asp-route-deviceId="@user.device_id" class="btn btn-success">
+                        Send Message
                     </a>
                 </td>
             </tr>

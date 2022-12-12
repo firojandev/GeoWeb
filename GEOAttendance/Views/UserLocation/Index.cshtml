@@ -16,6 +16,7 @@
             <th scope="col">Site Name</th>
             <th scope="col">Zone Id</th>
             <th scope="col">Zone Name</th>
+            <th scope="col">Date Time</th>
         </tr>
     </thead>
     <tbody>
@@ -24,13 +25,14 @@
 
             <tr>
                 <th scope="row">@loc.id</th>
-                <td>@loc.UserId</td>
+                <td>@loc.user_fullname</td>
                 <td>@loc.lat</td>
                 <td>@loc.lng</td>
-                <td>@loc.SiteId</td>
-                <td>@loc.SiteName</td>
-                <td>@loc.ZoneId</td>
-                <td>@loc.ZoneName</td>
+                <td>@loc.site_id</td>
+                <td>@loc.site_name</td>
+                <td>@loc.zone_id</td>
+                <td>@loc.zone_name</td>
+                <td>@loc.created_at</td>
             </tr>
 
         }

@@ -7,6 +7,7 @@ namespace GeoService.models
         public string? fullname { get; set; }
         public string? device_id { get; set; }
         public string? email { get; set; }
+        public string created_at { set; get; }
     }
 }
 

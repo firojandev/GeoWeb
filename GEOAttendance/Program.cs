@@ -1,4 +1,6 @@
 ﻿using System;
+using GEOAttendance.Extensions;
+using GEOAttendance.Services;
 using GeoService.services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,9 +11,13 @@ builder.Services.AddControllersWithViews();
 
 ConfigurationManager configuration = builder.Configuration;
 
+builder.Services.AddMqttClientHostedService();
+
+builder.Services.AddTransient<IGeoPublisher, GeoPublisher>();
 builder.Services.AddTransient<IUserService, UserService>();
 builder.Services.AddTransient<IUserLocation, UserLocation>();
-
+builder.Services.AddTransient<IAnnouceMessageService, AnnouceMessageService>();
+builder.Services.AddTransient<IUserImageService, UserImageService>();
 
 var app = builder.Build();
 

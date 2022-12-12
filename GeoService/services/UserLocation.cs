@@ -22,6 +22,13 @@ namespace GeoService.services
         {
             return await _dbHelper.GetUserLocationsList();
         }
+
+        public async Task<Boolean> SaveLocation(models.UserLocation userLocation)
+        {
+            await _dbHelper.SaveLocation(userLocation);
+            
+            return true;
+        }
     }
 }
 

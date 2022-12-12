@@ -20,6 +20,8 @@ public class HomeController : Controller
 
     private readonly IWebHostEnvironment _environment;
 
+    //https://learn.microsoft.com/en-us/dotnet/standard/serialization/system-text-json/how-to?pivots=dotnet-6-0
+
     public HomeController(ILogger<HomeController> logger, IUserService iUserService, IWebHostEnvironment environment)
     {
         _logger = logger;
@@ -39,7 +41,7 @@ public class HomeController : Controller
     public IActionResult CreateQRCode(QRCodeModel qrCodeModel) {
 
         //as per requirement modify here
-        qrCodeModel.QRCodeText = qrCodeModel.UserId + "/" + qrCodeModel.QRCodeText;
+        qrCodeModel.QRCodeText = qrCodeModel.QRCodeText;
 
         using (MemoryStream memoryStream = new MemoryStream())
         {
