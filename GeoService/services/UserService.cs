@@ -18,7 +18,17 @@ namespace GeoService.services
 
         public async Task<List<UserModel>> GetAll()
         {
-            return await _dbHelper.GetUsersList(); ;
+            return await _dbHelper.GetUsersList();
+        }
+
+        public async Task<UserModel> GetUser(int id)
+        {
+            return await _dbHelper.GetUser(id);
+        }
+
+        public async Task<Boolean> UpdateUser(int id, string expiredatetime)
+        {
+            return await _dbHelper.UpdateUser(id, expiredatetime);
         }
     }
 }

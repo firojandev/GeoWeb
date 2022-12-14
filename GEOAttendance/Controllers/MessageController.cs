@@ -51,7 +51,7 @@ namespace GEOAttendance.Controllers
             AnnouceMessageModel AnnouceMessageModel = new AnnouceMessageModel();
             AnnouceMessageModel.user_id = msg.user_id;
             AnnouceMessageModel.user_fullname = msg.user_fullname;
-            AnnouceMessageModel.message = msg.message;
+            AnnouceMessageModel.message = msg.announce;
 
             AnnouceMessageModel model = await _iAnnouceMessageService.SaveMessage(AnnouceMessageModel);
 

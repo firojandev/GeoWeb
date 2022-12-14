@@ -150,8 +150,6 @@ namespace GEOAttendance.Services
 
         public async Task<string> sendMessage(AnnouceMessage annouceMessage)
         {
-            Console.WriteLine(annouceMessage.message);
-
             string jsonString = JsonSerializer.Serialize<AnnouceMessage>(annouceMessage);
 
             if (mqttClient.IsConnected)

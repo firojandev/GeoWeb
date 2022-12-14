@@ -1,0 +1,25 @@
+﻿@model List<GeoService.models.UserImage>;
+
+@{
+    ViewData["Title"] = "Images";
+}
+<h1>@ViewData["Title"]</h1>
+
+<div class="row">
+    @foreach (var img in Model)
+    {
+        <div class="col-md-4">
+            <div class="card mt-1">
+                <div class="card-body">
+                    <img src="@img.image" height="200" width="200" /> <br />
+                    <span>Zone: @img.zone_name</span>  <br />
+                    <span class="text-dark">@img.created_at</span>
+                    <p class="text-primary">User: @img.user_fullname</p>
+                </div>
+
+            </div>
+        </div>
+      
+    }
+</div>
+

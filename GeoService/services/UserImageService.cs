@@ -20,8 +20,7 @@ namespace GeoService.services
 
         public async Task<List<GeoService.models.UserImage>> GetAll()
         {
-
-            return null;
+            return await _dbHelper.GetUserImagesList();
         }
 
         public async Task<bool> SaveImage(GeoService.models.UserImage userImage)

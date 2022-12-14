@@ -9,7 +9,7 @@ namespace GEOAttendance.Models
         public long UserId { get; set; }
 
         [Display(Name = "Expired Date & Time")]
-        public string? QRCodeText { get; set; }
+        public DateTime ExpireDateTIme { get; set; } = DateTime.Now;
 
         public string QrCodeUri { get; set; }
     }

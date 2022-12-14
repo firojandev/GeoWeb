@@ -9,6 +9,7 @@ using System.IO;
 using Microsoft.Extensions.Hosting;
 using Microsoft.AspNetCore.Components.Forms;
 using QRCoder;
+using static QRCoder.PayloadGenerator;
 
 namespace GEOAttendance.Controllers;
 
@@ -29,30 +30,38 @@ public class HomeController : Controller
         _environment = environment;
     }
 
-    public IActionResult Index(int userId)
+    public IActionResult Index(int Id)
     {
         QRCodeModel qRCodeModel = new QRCodeModel();
-        qRCodeModel.UserId = userId;
+        qRCodeModel.UserId = Id;
 
         return View(qRCodeModel);
     }
 
     [HttpPost]
-    public IActionResult CreateQRCode(QRCodeModel qrCodeModel) {
+    public async Task<IActionResult> CreateQRCode(QRCodeModel qrCodeModel) {
 
-        //as per requirement modify here
-        qrCodeModel.QRCodeText = qrCodeModel.QRCodeText;
+        var userId = qrCodeModel.UserId;
+        var expireDateTime = qrCodeModel.ExpireDateTIme.ToString("yyyy-MM-dd hh:mm:ss");
+
+        var isSuccess = _iUserService.UpdateUser(Convert.ToInt32(userId), expireDateTime);
+
+
+        var qURL = "https://geoattendance.azurewebsites.net/api/LoginApi/" + userId;
 
         using (MemoryStream memoryStream = new MemoryStream())
         {
             QRCodeGenerator qRCodeGenerator = new QRCodeGenerator();
-            QRCodeData qRCodeData = qRCodeGenerator.CreateQrCode(qrCodeModel.QRCodeText, QRCodeGenerator.ECCLevel.Q);
+
+            Url WebUri = new Url(qURL);
+            string UriPayload = WebUri.ToString();
+
+            QRCodeData qRCodeData = qRCodeGenerator.CreateQrCode(UriPayload, QRCodeGenerator.ECCLevel.Q);
             QRCoder.QRCode qrCodes = new QRCoder.QRCode(qRCodeData);
             using (Bitmap bitmap = qrCodes.GetGraphic(20))
             {
                 bitmap.Save(memoryStream, ImageFormat.Png);
                 qrCodeModel.QrCodeUri = "data:image/png;base64," + Convert.ToBase64String(memoryStream.ToArray());
-                //ViewBag.QRCode = "data:image/png;base64," + Convert.ToBase64String(memoryStream.ToArray());
             }
         }
         return View(qrCodeModel);
