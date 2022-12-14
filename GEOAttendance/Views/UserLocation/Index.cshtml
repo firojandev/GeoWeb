@@ -12,28 +12,27 @@
             <th scope="col">User</th>
             <th scope="col">Lattitude</th>
             <th scope="col">Longitude</th>
-            <th scope="col">Site Id</th>
-            <th scope="col">Site Name</th>
             <th scope="col">Zone Id</th>
             <th scope="col">Zone Name</th>
+            <th scope="col">Date Time</th>
         </tr>
     </thead>
     <tbody>
         @foreach (var loc in Model)
         {
-         
+
             <tr>
                 <th scope="row">@loc.id</th>
-                <td>@loc.UserId</td>
+                <td>@loc.user_fullname</td>
                 <td>@loc.lat</td>
                 <td>@loc.lng</td>
-                <td>@loc.SiteId</td>
-                <td>@loc.SiteName</td>
-                <td>@loc.ZoneId</td>
-                <td>@loc.ZoneName</td>
+                <td>@loc.zone_id</td>
+                <td>@loc.zone_name</td>
+                <td>@loc.created_at</td>
             </tr>
 
         }
 
     </tbody>
 </table>
+

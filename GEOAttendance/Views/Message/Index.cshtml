@@ -1,0 +1,32 @@
+﻿@model List<GeoService.models.AnnouceMessageModel>;
+
+@{
+    ViewData["Title"] = "Messages";
+}
+<h1>@ViewData["Title"]</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">User</th>
+            <th scope="col">Message</th>
+            <th scope="col">Created</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var message in Model)
+        {
+
+            <tr>
+                <th scope="row">@message.id</th>
+                <td>@message.user_fullname</td>
+                <td>@message.message</td>
+                <td>@message.created_at</td>
+            </tr>
+
+        }
+
+    </tbody>
+</table>
+

@@ -1,0 +1,23 @@
+﻿@model AnnouceMessage;
+@{
+    ViewData["Title"] = "Messages";
+}
+<h1>@ViewData["Title"]</h1>
+
+<div class="row">
+    <form asp-action="sendMessage" method="post" asp-controller="Message">
+        <input type="hidden" asp-for="user_id" />
+        <input type="hidden" asp-for="device_id" />
+        <input type="hidden" asp-for="user_fullname" />
+        <div class="col-md-4">
+            <div class="form-group">
+                <textarea asp-for="announce" rows="4" cols="50" class="form-control"></textarea>
+            </div>
+            <div class="form-group mt-2">
+                <input id="btnSend" type="submit" value="Send" class="btn btn-primary text-center" />
+            </div>
+
+
+        </div>
+    </form>
+</div>
