@@ -4,6 +4,9 @@
     ViewData["Title"] = "Users List";
 }
 <h1>@ViewData["Title"]</h1>
+<a asp-controller="Home" asp-action="CreateUser" class="btn btn-primary">
+    Create User
+</a>
 
 <table class="table table-striped">
     <thead>
@@ -14,7 +17,10 @@
             <th scope="col">Email</th>
             <th scope="col">Phone</th>
             <th scope="col">Valid Till</th>
-            <th scope="col">Actions</th>
+            <th scope="col">
+                Actions
+           
+            </th>
         </tr>
     </thead>
     <tbody>

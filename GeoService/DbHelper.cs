@@ -22,7 +22,38 @@ namespace GeoService
         {
             _connectionString = configuration.GetConnectionString("DefaultConnection");
         }
-      
+
+        public async Task<Boolean> SaveUser(models.UserModel userModel)
+        {
+            Boolean isSuccess = false;
+
+            try
+            {
+                using (MySqlConnection conn = new MySqlConnection(_connectionString))
+                {
+                    conn.Open();
+
+                    MySqlCommand comm = conn.CreateCommand();
+                    comm.CommandText = "INSERT INTO user(fullname,device_id,email,phone_number) VALUES(@fullname, @device_id, @email, @phone_number)";
+                    comm.Parameters.AddWithValue("@fullname", userModel.fullname);
+                    comm.Parameters.AddWithValue("@device_id", userModel.device_id);
+                    comm.Parameters.AddWithValue("@email", userModel.email);
+                    comm.Parameters.AddWithValue("@phone_number", userModel.phone);
+                    comm.ExecuteNonQuery();
+
+                    isSuccess = true;
+
+                    conn.Close();
+                }
+            }
+            catch (Exception e)
+            {
+                isSuccess = false;
+            }
+
+            return isSuccess;
+        }
+
 
         public async Task<List<UserModel>> GetUsersList()
         {
@@ -353,9 +384,7 @@ namespace GeoService
             }
             return list;
         }
-
-
-
+      
 
     }
 }

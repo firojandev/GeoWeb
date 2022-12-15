@@ -75,7 +75,22 @@ public class HomeController : Controller
      return View(ulist);
     }
 
-  
+    [HttpGet]
+    public async Task<IActionResult> CreateUser()
+    {
+        GeoService.models.UserModel userModel = new GeoService.models.UserModel();
+        return View(userModel);
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> CreateUser(GeoService.models.UserModel userModel)
+    {
+        await _iUserService.SaveUser(userModel);
+
+        return Redirect("Users");
+    }
+
+
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()
     {
