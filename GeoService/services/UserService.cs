@@ -26,6 +26,11 @@ namespace GeoService.services
             return await _dbHelper.GetUser(id);
         }
 
+        public async Task<bool> SaveUser(UserModel userModel)
+        {
+            return await _dbHelper.SaveUser(userModel);
+        }
+
         public async Task<Boolean> UpdateUser(int id, string expiredatetime)
         {
             return await _dbHelper.UpdateUser(id, expiredatetime);
