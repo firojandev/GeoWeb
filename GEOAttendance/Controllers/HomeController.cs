@@ -47,7 +47,7 @@ public class HomeController : Controller
         var isSuccess = _iUserService.UpdateUser(Convert.ToInt32(userId), expireDateTime);
 
 
-        var qURL = "https://geoattendance.azurewebsites.net/api/LoginApi/" + userId;
+        var qURL = "https://geoattendance.azurewebsites.net/api/LoginApi";
 
         using (MemoryStream memoryStream = new MemoryStream())
         {

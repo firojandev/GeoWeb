@@ -91,7 +91,7 @@ namespace GeoService
             return list;
         }
 
-        public async Task<UserModel> GetUser(int id)
+        public async Task<UserModel> GetUser(string device_id)
         {
             UserModel user = new UserModel();
 
@@ -101,7 +101,7 @@ namespace GeoService
                 {
                     conn.Open();
 
-                    MySqlCommand cmd = new MySqlCommand("select * from user where id = " + id, conn);
+                    MySqlCommand cmd = new MySqlCommand("select * from user where device_id = '" + device_id +"'", conn);
 
                     using (var reader = cmd.ExecuteReader())
                     {

@@ -10,13 +10,20 @@ namespace GEOAttendance.Extensions
         {
             services.AddMqttClientServiceWithConfig(aspOptionBuilder =>
             {
-                aspOptionBuilder
-                .WithCredentials("", "")
-                .WithClientId("")
-                .WithTcpServer("", 0)
-                .WithTls();
+                aspOptionBuilder.WithCredentials("silbd.andev", "eVaf@2022")
+                                 .WithClientId(RandomString(10))
+                                 .WithTcpServer("632848067eee4f7381a8d773889b5b06.s2.eu.hivemq.cloud", 8883)
+                                 .WithTls();
             });
             return services;
+        }
+
+        private static Random random = new Random();
+        public static string RandomString(int length)
+        {
+            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            return new string(Enumerable.Repeat(chars, length)
+                .Select(s => s[random.Next(s.Length)]).ToArray());
         }
 
         private static IServiceCollection AddMqttClientServiceWithConfig(this IServiceCollection services, Action<MqttClientOptionsBuilder> configure)

@@ -21,9 +21,9 @@ namespace GeoService.services
             return await _dbHelper.GetUsersList();
         }
 
-        public async Task<UserModel> GetUser(int id)
+        public async Task<UserModel> GetUser(string device_id)
         {
-            return await _dbHelper.GetUser(id);
+            return await _dbHelper.GetUser(device_id);
         }
 
         public async Task<bool> SaveUser(UserModel userModel)
