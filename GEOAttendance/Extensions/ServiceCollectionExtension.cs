@@ -10,9 +10,9 @@ namespace GEOAttendance.Extensions
         {
             services.AddMqttClientServiceWithConfig(aspOptionBuilder =>
             {
-                aspOptionBuilder.WithCredentials("silbd.andev", "eVaf@2022")
+                aspOptionBuilder.WithCredentials("", "")
                                  .WithClientId(RandomString(10))
-                                 .WithTcpServer("632848067eee4f7381a8d773889b5b06.s2.eu.hivemq.cloud", 8883)
+                                 .WithTcpServer("", 8883)
                                  .WithTls();
             });
             return services;
